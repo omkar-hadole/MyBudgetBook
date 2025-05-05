@@ -1,11 +1,17 @@
 import React from "react";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
-import ExpenseSummary from "./components/ExpenseSummary";
+import Index from "./pages/Index";
+import NotFound from "./pages/NotFound";
 
 const App = () => {
   return (
     <>
-          <ExpenseSummary/>
+      <BrowserRouter>
+        <Routes>
+          <Route path="/" element={<Index />} />
+          <Route path="*" element={<NotFound />} />
+        </Routes>
+      </BrowserRouter>
     </>
   );
 };
