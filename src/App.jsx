@@ -1,14 +1,11 @@
 import React from "react";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
+import ExpenseSummary from "./components/ExpenseSummary";
 
 const App = () => {
   return (
     <>
-      <BrowserRouter>
-        <Routes>
-          <Route/>
-        </Routes>
-      </BrowserRouter>
+          <ExpenseSummary/>
     </>
   );
 };
