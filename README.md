@@ -1,24 +1,24 @@
 # 💰 MyBudgetBook
 
-MyBudgetBook is a modern budget management application that helps users track and manage their personal expenses with clarity and ease. With category-wise breakdowns, visual summaries, and intuitive design, it simplifies financial decision-making and daily budgeting.
+**MyBudgetBook** is a modern budget management application that helps users track and manage their personal expenses with clarity and ease. With category-wise breakdowns, visual summaries, and intuitive design, it simplifies financial decision-making and daily budgeting.
 
 ---
 
-# 🚀 Features
+## 🚀 Features
 
-- 📊 Expense Summary Dashboard
+- 📊 **Expense Summary Dashboard**  
   View your total expenses, highest category spend, and number of entries at a glance.
 
-- 🧮 Category-wise Expense Tracking 
+- 🧮 **Category-wise Expense Tracking**  
   Organize your spending under categories like food, rent, utilities, transport, etc.
 
-- 📈 Interactive Charts  
+- 📈 **Interactive Charts**  
   Visualize your expenses using donut and pie charts for better insight.
 
-- 🖼️ Responsive UI
+- 🖼️ **Responsive UI**  
   Clean and consistent layout optimized for desktops and tablets.
 
-- 🔔 Toast Notifications  
+- 🔔 **Toast Notifications**  
   Get visual feedback for actions using smooth toast alerts.
 
 ---
@@ -31,12 +31,12 @@ MyBudgetBook is a modern budget management application that helps users track an
 
 ---
 
-# 🛠️ Tech Stack
+## 🛠️ Tech Stack
 
-- React.js
-- Tailwind CSS
-- Chart.js
-- React Hot Toast
+- **React.js**
+- **Tailwind CSS**
+- **Chart.js**
+- **React Hot Toast**
 
 ---
 
