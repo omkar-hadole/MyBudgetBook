@@ -1,4 +1,7 @@
 import React from "react";
+import Logo from "../assets/Logo.svg";
+import Profile from "../assets/Profile.svg";
+import Actions from "../assets/Actions.svg";
 
 const DashboardLayout = ({ children }) => {
   return (
@@ -7,9 +10,12 @@ const DashboardLayout = ({ children }) => {
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-4">
           <div className="flex justify-center md:justify-between items-center">
             <div className="flex items-center space-x-2 cursor-pointer">
+              <img src={Logo} alt="LOGO" />
               <h1 className="text-[19px] font-bold text-black">MyBudgetBook</h1>
             </div>
             <div className="hidden md:flex items-center space-x-4">
+              <img src={Actions} alt="Notification" />
+              <img src={Profile} alt="Profile" />
             </div>
           </div>
         </div>
