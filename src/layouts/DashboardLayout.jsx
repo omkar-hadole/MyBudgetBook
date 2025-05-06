@@ -1,5 +1,5 @@
 import React from "react";
-import Logo from "../assets/Logo.svg";
+import Logo from '../assets/Logo.svg';
 import Profile from "../assets/Profile.svg";
 import Actions from "../assets/Actions.svg";
 import { Toaster } from "react-hot-toast";
@@ -38,7 +38,7 @@ const DashboardLayout = ({ children }) => {
               <h1 className="text-[19px] font-bold text-black">MyBudgetBook</h1>
             </div>
             <div className="hidden md:flex items-center space-x-4">
-              <img src={Actions} alt="Notification" />
+              <img src={Actions} alt="Notification"/>
               <img src={Profile} alt="Profile" />
             </div>
           </div>
@@ -48,6 +48,17 @@ const DashboardLayout = ({ children }) => {
       <main className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
         {children}
       </main>
+
+      <footer className="bg-white shadow-[0_-4px_6px_-1px_rgba(0,0,0,0.1)]">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-4">
+          <div className="flex items-center space-x-2 justify-center">
+            <img src={Logo} alt="" className="w-7" />
+            <p className="text-center text-gray-500 text-sm">
+              MyBudgetBook &copy; {new Date().getFullYear()}
+            </p>
+          </div>
+        </div>
+      </footer>
     </div>
   );
 };
