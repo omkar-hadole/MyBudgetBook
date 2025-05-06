@@ -73,6 +73,12 @@ const ExpenseForm = () => {
             className="w-full px-4 py-2 text-gray-500 rounded-md border border-gray-300 focus:outline-none focus:ring-2 focus:ring-expense-light focus:border-transparent transition-all"
           />
         </div>
+        <button
+          type="submit"
+          className="w-full bg-expense text-white py-2 rounded-md hover:bg-expense-dark font-medium focus:outline-none focus:ring-2 focus:ring-expense-light transition-all"
+        >
+          Add Expense
+        </button>
       </form>
     </div>
   );
