@@ -1,13 +1,12 @@
 import React from "react";
-import ExpenseSummary from "../components/ExpenseSummary";
 import DashboardLayout from "../layouts/DashboardLayout";
+import Dashboard from "../components/Dashboard";
 
 const Index = () => {
   return (
-    <>
-    <DashboardLayout/>
-    <ExpenseSummary/>
-    </>
+      <DashboardLayout>
+        <Dashboard />
+      </DashboardLayout>
   );
 };
 
