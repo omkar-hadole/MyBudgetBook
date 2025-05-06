@@ -11,7 +11,7 @@ const ExpenseSummary = () => {
           <img src={Group1} alt="Total Expenses" />
           <div>
             <h3 className="text-sm font-medium text-gray-500">Total Expenses</h3>
-            <p className="text-2xl font-bold text-black">₹0</p>
+            <p className="text-2xl font-bold text-black">₹3,945.55</p>
           </div>
         </div>
       </div>
@@ -20,7 +20,7 @@ const ExpenseSummary = () => {
           <img src={Group2} alt="Highest Category" />
           <div>
             <h3 className="text-sm font-medium text-gray-500">Highest Category</h3>
-            <p className="text-2xl font-bold text-black">None</p>
+            <p className="text-2xl font-bold text-black">Shopping</p>
           </div>
         </div>
       </div>
@@ -29,7 +29,7 @@ const ExpenseSummary = () => {
           <img src={Group3} alt="Total Entries" />
           <div>
             <h3 className="text-sm font-medium text-gray-500">Total Entries</h3>
-            <p className="text-2xl font-bold text-black">0</p>
+            <p className="text-2xl font-bold text-black">16</p>
           </div>
         </div>
       </div>

@@ -1,9 +1,19 @@
-import React from 'react'
+import React from "react";
 
-function ExpenseChart() {
+const ExpenseChart = () => {
   return (
-    <div>ExpenseChart</div>
-  )
-}
+    <div className="bg-white rounded-lg shadow-md p-6">
+      <h2 className="text-[19px] font-semibold text-[#333E47] mb-4">
+        Expenses by category
+      </h2>
 
-export default ExpenseChart
+      <div className="flex justify-center mb-6 space-x-4">
+      </div>
+
+      <div className="text-center text-gray-400">
+      </div>
+    </div>
+  );
+};
+
+export default ExpenseChart;
