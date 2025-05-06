@@ -1,12 +1,49 @@
-# React + Vite
+# 💰 MyBudgetBook
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+**MyBudgetBook** is a modern budget management application that helps users track and manage their personal expenses with clarity and ease. With category-wise breakdowns, visual summaries, and intuitive design, it simplifies financial decision-making and daily budgeting.
 
-Currently, two official plugins are available:
+---
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+## 🚀 Features
 
-## Expanding the ESLint configuration
+- 📊 **Expense Summary Dashboard**  
+  View your total expenses, highest category spend, and number of entries at a glance.
 
-If you are developing a production application, we recommend using TypeScript with type-aware lint rules enabled. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) for information on how to integrate TypeScript and [`typescript-eslint`](https://typescript-eslint.io) in your project.
+- 🧮 **Category-wise Expense Tracking**  
+  Organize your spending under categories like food, rent, utilities, transport, etc.
+
+- 📈 **Interactive Charts**  
+  Visualize your expenses using donut and pie charts for better insight.
+
+- 🖼️ **Responsive UI**  
+  Clean and consistent layout optimized for desktops and tablets.
+
+- 🔔 **Toast Notifications**  
+  Get visual feedback for actions using smooth toast alerts.
+
+---
+
+# 🖼️ Screenshots
+
+| Dashboard | 
+|----------|
+| ![Dashboard](./screenshots/dashboard.png) | 
+
+---
+
+## 🛠️ Tech Stack
+
+- **React.js**
+- **Tailwind CSS**
+- **Chart.js**
+- **React Hot Toast**
+
+---
+
+## 📦 Installation
+
+```bash
+git clone https://github.com/omkar-hadole/MyBudgetBook.git
+cd MyBudgetBook
+npm install
+npm run dev
