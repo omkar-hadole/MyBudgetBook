@@ -2,6 +2,8 @@
 
 **MyBudgetBook** is a modern budget management application that helps users track and manage their personal expenses with clarity and ease. With category-wise breakdowns, visual summaries, and intuitive design, it simplifies financial decision-making and daily budgeting.
 
+🔗 **Live Demo**: [my-budget-book.vercel.app](https://my-budget-book.vercel.app/)
+
 ---
 
 ## 🚀 Features
@@ -23,7 +25,7 @@
 
 ---
 
-# 🖼️ Screenshots
+## 🖼️ Screenshots
 
 | Dashboard | 
 |----------|
