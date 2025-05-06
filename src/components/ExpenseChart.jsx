@@ -36,7 +36,6 @@ const ExpenseChart = () => {
       </div>
 
       <div className="text-center text-gray-400">
-        {/* Chart placeholder */}
         {chartType === "pie" ? (
           <div className="w-full h-48 bg-gray-100 rounded flex items-center justify-center">
             Pie Chart Preview
