@@ -1,12 +1,25 @@
 import React from "react";
+import toast from "react-hot-toast";
 
 const ExpenseForm = () => {
+  const handleSubmit = (event) => {
+    event.preventDefault();
+    const description = event.target.description.value;
+    const amount = parseFloat(event.target.amount.value);
+    const category = event.target.category.value;
+    const date = event.target.date.value;
+    if (!description || !amount || !category || !date) {
+      toast.error("Please fill in all fields.");
+      return;
+    }
+    toast.success("Expense added successfully!");
+  };
   return (
     <div className="bg-white rounded-lg shadow-md p-6 w-full max-w-md mx-auto">
       <h2 className="text-2xl font-semibold text-expense-dark mb-6 text-center">
         Add New Expense
       </h2>
-      <form className="space-y-4">
+      <form className="space-y-4" onSubmit={handleSubmit}>
         <div>
           <label
             htmlFor="description"
