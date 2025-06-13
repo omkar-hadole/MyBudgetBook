@@ -27,9 +27,9 @@
 
 ## 🖼️ Screenshots
 
-| Dashboard | 
-|----------|
-| ![Dashboard](./screenshots/dashboard.png) | 
+| Landing Page | Dashboard |
+|--------------|-----------|
+| ![Landing](./screenshots/landing.png) | ![Dashboard](./screenshots/dashboard.png) |
 
 ---
 
