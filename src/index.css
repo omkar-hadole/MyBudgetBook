@@ -14,3 +14,45 @@
   font-weight: auto;
   font-style: normal;
 }
+
+@layer utilities {
+    @keyframes float {
+
+        0%,
+        100% {
+            transform: translateY(0);
+        }
+
+        50% {
+            transform: translateY(-6px);
+        }
+    }
+
+    @keyframes float-reverse {
+
+        0%,
+        100% {
+            transform: translateY(0);
+        }
+
+        50% {
+            transform: translateY(6px);
+        }
+    }
+
+    .animate-float {
+        animation: float 3s ease-in-out infinite;
+    }
+
+    .animate-float-reverse {
+        animation: float-reverse 3s ease-in-out infinite;
+    }
+}
+
+.bg-horizontal-lines {
+    background-image: repeating-linear-gradient(to right,
+            #0000000A 0px,
+            #0000000A 1px,
+            transparent 1px,
+            transparent 60px);
+}
