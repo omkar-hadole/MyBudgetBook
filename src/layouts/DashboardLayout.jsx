@@ -1,0 +1,66 @@
+import React from "react";
+import Logo from '../assets/Logo.svg';
+import Profile from "../assets/Profile.svg";
+import Actions from "../assets/Actions.svg";
+import { Toaster } from "react-hot-toast";
+
+const DashboardLayout = ({ children }) => {
+  return (
+    <div className="min-h-screen bg-[#ECEFF2]">
+      <Toaster
+        position="top-right"
+        toastOptions={{
+          duration: 3000,
+          style: {
+            background: "#363636",
+            color: "#fff",
+            borderRadius: "8px",
+          },
+          success: {
+            iconTheme: {
+              primary: "#10b981",
+              secondary: "#fff",
+            },
+          },
+          error: {
+            iconTheme: {
+              primary: "#ef4444",
+              secondary: "#fff",
+            },
+          },
+        }}
+      />
+      <header className="bg-white shadow-sm sticky top-0 left-0 right-0 z-10">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-4">
+          <div className="flex justify-center md:justify-between items-center">
+            <div className="flex items-center space-x-2 cursor-pointer">
+              <img src={Logo} alt="LOGO" />
+              <h1 className="text-[19px] font-bold text-black">MyBudgetBook</h1>
+            </div>
+            <div className="hidden md:flex items-center space-x-4">
+              <img src={Actions} alt="Notification"/>
+              <img src={Profile} alt="Profile" />
+            </div>
+          </div>
+        </div>
+      </header>
+
+      <main className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
+        {children}
+      </main>
+
+      <footer className="bg-white shadow-[0_-4px_6px_-1px_rgba(0,0,0,0.1)]">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-4">
+          <div className="flex items-center space-x-2 justify-center">
+            <img src={Logo} alt="" className="w-7" />
+            <p className="text-center text-gray-500 text-sm">
+              MyBudgetBook &copy; {new Date().getFullYear()}
+            </p>
+          </div>
+        </div>
+      </footer>
+    </div>
+  );
+};
+
+export default DashboardLayout;
