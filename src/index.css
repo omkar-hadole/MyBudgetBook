@@ -3,16 +3,20 @@
 @import "tailwindcss";
 
 @theme {
-  --color-expense: #9E77ED;
-  --color-expense-light: #9b87f5;
-  --color-expense-dark: #6e59a5;
+    --color-expense: #9E77ED;
+    --color-expense-light: #9b87f5;
+    --color-expense-dark: #6e59a5;
 }
 
 * {
-  font-family: "Manrope", sans-serif;
-  font-optical-sizing: auto;
-  font-weight: auto;
-  font-style: normal;
+    font-family: "Manrope", sans-serif;
+    font-optical-sizing: auto;
+    font-weight: auto;
+    font-style: normal;
+}
+
+html {
+    scroll-behavior: smooth;
 }
 
 @layer utilities {

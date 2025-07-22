@@ -1,58 +1,15 @@
 import React, { useState } from "react";
-import { Trash } from "lucide-react";
+import { useExpenses } from "../context/ExpenseContext";
 import toast from "react-hot-toast";
-
-const formatCurrency = (amount) => {
-  return `₹${amount.toFixed(2)}`;
-};
-
-const formatDate = (dateStr) => {
-  const date = new Date(dateStr);
-  return date.toLocaleDateString("en-US", {
-    day: "numeric",
-    month: "short",
-    year: "numeric",
-  });
-};
-
-const getCategoryTextColor = (category) => {
-  const colors = {
-    food: "text-green-600",
-    transport: "text-blue-600",
-    entertainment: "text-yellow-600",
-    shopping: "text-purple-600",
-    utilities: "text-pink-600",
-    health: "text-red-600",
-    other: "text-gray-600",
-  };
-  return colors[category] || "text-gray-600";
-};
+import {
+  formatCurrency,
+  formatDate,
+  getCategoryTextColor,
+} from "../utils/expenses";
+import { Trash } from "lucide-react";
 
 const ExpenseList = () => {
-  const [expenses, setExpenses] = useState([
-    {
-      id: "1",
-      description: "Coffee at Starbucks",
-      category: "food",
-      date: "2025-05-06",
-      amount: 500.0,
-    },
-    {
-      id: "2",
-      description: "Taxi ride to airport",
-      category: "transport",
-      date: "2025-05-05",
-      amount: 200.0,
-    },
-    {
-      id: "3",
-      description: "Movie ticket",
-      category: "entertainment",
-      date: "2025-05-04",
-      amount: 120.0,
-    },
-  ]);
-
+  const { expenses, deleteExpense } = useExpenses();
   const [categoryFilter, setCategoryFilter] = useState("all");
 
   const categoryOptions = [
@@ -74,7 +31,7 @@ const ExpenseList = () => {
   );
 
   const handleDelete = (id) => {
-    setExpenses((prev) => prev.filter((exp) => exp.id !== id));
+    deleteExpense(id);
     toast.success("Expense deleted successfully");
   };
 
@@ -114,19 +71,34 @@ const ExpenseList = () => {
             <table className="min-w-full divide-y divide-gray-200">
               <thead className="bg-gray-50">
                 <tr>
-                  <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider w-2/5">
+                  <th
+                    scope="col"
+                    className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider w-2/5"
+                  >
                     Description
                   </th>
-                  <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
+                  <th
+                    scope="col"
+                    className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider"
+                  >
                     Category
                   </th>
-                  <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
+                  <th
+                    scope="col"
+                    className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider"
+                  >
                     Date
                   </th>
-                  <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
+                  <th
+                    scope="col"
+                    className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider"
+                  >
                     Amount
                   </th>
-                  <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider w-0" />
+                  <th
+                    scope="col"
+                    className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider w-0"
+                  ></th>
                 </tr>
               </thead>
               <tbody className="bg-white divide-y divide-gray-200">
@@ -158,9 +130,10 @@ const ExpenseList = () => {
                     <td className="px-6 py-4 whitespace-nowrap text-sm font-medium text-gray-900">
                       {formatDate(expense.date)}
                     </td>
-                    <td className="px-6 py-4 whitespace-nowrap text-sm font-medium">
+                    <td className="px-6 py-4 whitespace-nowrap text-sm font-medium ">
                       - {formatCurrency(expense.amount)}
                     </td>
+
                     <td className="px-6 py-4 whitespace-nowrap text-right">
                       <button
                         onClick={() => handleDelete(expense.id)}

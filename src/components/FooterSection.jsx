@@ -79,10 +79,10 @@ const FooterSection = () => (
                 <div className="flex gap-3 md:gap-4 mt-2 md:mt-0">
                     <a href="#" className="inline-flex items-center justify-center w-8 h-8 p-1.5 rounded-full bg-white border border-gray-200 text-gray-500 hover:text-purple-500 hover:shadow-lg hover:scale-110 transition-all duration-200">
                         <img src={Facebook} alt="" />
-                        </a>
+                    </a>
                     <a href="#" className="inline-flex items-center justify-center w-8 h-8 p-1.5 rounded-full bg-white border border-gray-200 text-gray-500 hover:text-purple-500 hover:shadow-lg hover:scale-110 transition-all duration-200">
                         <img src={Twitter} alt="" />
-                        </a>
+                    </a>
                     <a href="#" className="inline-flex items-center justify-center w-8 h-8 p-1.5 rounded-full bg-white border border-gray-200 text-gray-500 hover:text-purple-500 hover:shadow-lg hover:scale-110 transition-all duration-200">
                         <img src={Instagram} alt="" />
                     </a>

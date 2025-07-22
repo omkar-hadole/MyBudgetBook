@@ -39,6 +39,8 @@
 - **Tailwind CSS**
 - **Chart.js**
 - **React Hot Toast**
+- **GSAP**
+- **Supabase**
 
 ---
 

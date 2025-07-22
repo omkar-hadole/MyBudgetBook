@@ -1,25 +1,62 @@
-import React from "react";
+import React, { useState } from "react";
+import { useExpenses } from "../context/ExpenseContext";
 import toast from "react-hot-toast";
 
 const ExpenseForm = () => {
-  const handleSubmit = (event) => {
-    event.preventDefault();
-    const description = event.target.description.value;
-    const amount = parseFloat(event.target.amount.value);
-    const category = event.target.category.value;
-    const date = event.target.date.value;
-    if (!description || !amount || !category || !date) {
-      toast.error("Please fill in all fields.");
-      return;
+  const { addExpense } = useExpenses();
+  const [description, setDescription] = useState("");
+  const [amount, setAmount] = useState("");
+  const [category, setCategory] = useState("");
+  const [date, setDate] = useState(new Date().toISOString().split("T")[0]);
+  const [isSubmitting, setIsSubmitting] = useState(false);
+
+  const categoryOptions = [
+    { value: "food", label: "Food & Dining" },
+    { value: "transport", label: "Transportation" },
+    { value: "entertainment", label: "Entertainment" },
+    { value: "shopping", label: "Shopping" },
+    { value: "utilities", label: "Utilities" },
+    { value: "health", label: "Health & Medical" },
+    { value: "other", label: "Other" },
+  ];
+
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    try {
+      if (!description.trim()) {
+        throw new Error("Please enter a description");
+      }
+
+      if (!amount || isNaN(Number(amount)) || Number(amount) <= 0) {
+        throw new Error("Please enter a valid amount");
+      }
+
+      addExpense({
+        description: description.trim(),
+        amount: Number(amount),
+        category,
+        date,
+      });
+
+      toast.success("Expense added successfully");
+
+      setDescription("");
+      setAmount("");
+      setCategory("");
+      setDate(new Date().toISOString().split("T")[0]);
+    } catch (error) {
+      toast.error("Failed to add expense");
+    } finally {
+      setIsSubmitting(false);
     }
-    toast.success("Expense added successfully!");
   };
+
   return (
     <div className="bg-white rounded-lg shadow-md p-6 w-full max-w-md mx-auto">
       <h2 className="text-2xl font-semibold text-expense-dark mb-6 text-center">
         Add New Expense
       </h2>
-      <form className="space-y-4" onSubmit={handleSubmit}>
+      <form onSubmit={handleSubmit} className="space-y-4">
         <div>
           <label
             htmlFor="description"
@@ -31,10 +68,12 @@ const ExpenseForm = () => {
             type="text"
             id="description"
             placeholder="What did you spend on?"
+            value={description}
+            onChange={(e) => setDescription(e.target.value)}
             className="w-full px-4 py-2 rounded-md border border-gray-300 focus:outline-none focus:ring-2 focus:ring-expense-light focus:border-transparent transition-all"
+            disabled={isSubmitting}
           />
         </div>
-
         <div>
           <label
             htmlFor="amount"
@@ -46,7 +85,10 @@ const ExpenseForm = () => {
             type="number"
             id="amount"
             placeholder="0.00"
+            value={amount}
+            onChange={(e) => setAmount(e.target.value)}
             className="w-full px-4 py-2 rounded-md border border-gray-300 focus:outline-none focus:ring-2 focus:ring-expense-light focus:border-transparent transition-all"
+            disabled={isSubmitting}
           />
         </div>
         <div>
@@ -58,18 +100,19 @@ const ExpenseForm = () => {
           </label>
           <select
             id="category"
+            value={category}
+            onChange={(e) => setCategory(e.target.value)}
             className="w-full px-4 py-2 text-gray-500 rounded-md border border-gray-300 focus:outline-none focus:ring-2 focus:ring-expense-light focus:border-transparent transition-all"
+            disabled={isSubmitting}
           >
-            <option value="" disabled selected>
+            <option value="" disabled>
               Select Category
             </option>
-            <option value="food">Food & Dining</option>
-            <option value="transport">Transportation</option>
-            <option value="entertainment">Entertainment</option>
-            <option value="shopping">Shopping</option>
-            <option value="utilities">Utilities</option>
-            <option value="health">Health & Medical</option>
-            <option value="other">Other</option>
+            {categoryOptions.map((option) => (
+              <option key={option.value} value={option.value}>
+                {option.label}
+              </option>
+            ))}
           </select>
         </div>
 
@@ -82,15 +125,19 @@ const ExpenseForm = () => {
           </label>
           <input
             type="date"
-            id="date"
+            id="date" 
+            value={date}
+            onChange={(e) => setDate(e.target.value)}
             className="w-full px-4 py-2 text-gray-500 rounded-md border border-gray-300 focus:outline-none focus:ring-2 focus:ring-expense-light focus:border-transparent transition-all"
+            disabled={isSubmitting}
           />
         </div>
         <button
           type="submit"
-          className="w-full bg-expense text-white py-2 rounded-md hover:bg-expense-dark font-medium focus:outline-none focus:ring-2 focus:ring-expense-light transition-all"
+          className="w-full bg-expense text-white py-2  rounded-md hover:bg-expense-dark font-medium focus:outline-none focus:ring-2 focus:ring-expense-light  transition-all"
+          disabled={isSubmitting}
         >
-          Add Expense
+          {isSubmitting ? "Adding..." : "Add Expense"}
         </button>
       </form>
     </div>

@@ -1,11 +1,52 @@
-import React from 'react';
+import React, { useRef } from 'react';
 import AboutImage from '../assets/about.svg';
+import gsap from 'gsap';
+import { useGSAP } from '@gsap/react';
+import { ScrollTrigger } from 'gsap/ScrollTrigger';
+gsap.registerPlugin(ScrollTrigger);
 
 const AboutSection = () => {
+    const sectionRef = useRef();
+    const leftColRef = useRef();
+    const rightColRef = useRef();
+
+    useGSAP(() => {
+        gsap.fromTo(
+            leftColRef.current,
+            { opacity: 0, x: -60 },
+            {
+                opacity: 1,
+                x: 0,
+                duration: 1,
+                ease: 'power3.out',
+                scrollTrigger: {
+                    trigger: sectionRef.current,
+                    start: 'top 80%',
+                    toggleActions: 'play none none reverse',
+                },
+            }
+        );
+        gsap.fromTo(
+            rightColRef.current,
+            { opacity: 0, x: 60 },
+            {
+                opacity: 1,
+                x: 0,
+                duration: 1,
+                ease: 'power3.out',
+                scrollTrigger: {
+                    trigger: sectionRef.current,
+                    start: 'top 80%',
+                    toggleActions: 'play none none reverse',
+                },
+            }
+        );
+    }, { scope: sectionRef });
+
     return (
-        <section id="about" className="w-full bg-gradient-to-b from-white to-gray-50 py-20 sm:py-32 px-4 md:px-8 min-h-screen flex items-center">
+        <section ref={sectionRef} id="about" className="w-full bg-gradient-to-b from-white to-gray-50 py-20 sm:py-32 px-4 md:px-8 min-h-screen flex items-center">
             <div className="max-w-7xl mx-auto flex flex-col md:flex-row items-center gap-16 w-full">
-                <div className="md:w-1/2 text-center md:text-left max-w-xl md:max-w-none">
+                <div ref={leftColRef} className="md:w-1/2 text-center md:text-left max-w-xl md:max-w-none">
                     <h2 className="text-4xl sm:text-5xl font-bold text-gray-900 mb-6 leading-tight">
                         About MyBudgetBook: Empowering Your Financial Journey
                     </h2>
@@ -16,7 +57,7 @@ const AboutSection = () => {
                         Learn More
                     </a>
                 </div>
-                <div className="md:w-1/2 flex justify-center md:justify-end">
+                <div ref={rightColRef} className="md:w-1/2 flex justify-center md:justify-end">
                     <img src={AboutImage} alt="About MyBudgetBook" className="w-full max-w-md h-auto transform hover:scale-105 transition duration-300" />
                 </div>
             </div>

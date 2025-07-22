@@ -1,10 +1,36 @@
-import React from "react";
+import React, { useState, useRef, useEffect } from "react";
 import Logo from '../assets/Logo.svg';
 import Profile from "../assets/Profile.svg";
 import Actions from "../assets/Actions.svg";
 import { Toaster } from "react-hot-toast";
+import { useAuth } from '../context/AuthContext';
+import { useNavigate } from 'react-router-dom';
 
 const DashboardLayout = ({ children }) => {
+  const { session, signOut } = useAuth();
+  const [dropdownOpen, setDropdownOpen] = useState(false);
+  const profileRef = useRef();
+  const navigate = useNavigate();
+
+  useEffect(() => {
+    function handleClick(e) {
+      if (profileRef.current && !profileRef.current.contains(e.target)) {
+        setDropdownOpen(false);
+      }
+    }
+    if (dropdownOpen) {
+      document.addEventListener('mousedown', handleClick);
+    } else {
+      document.removeEventListener('mousedown', handleClick);
+    }
+    return () => document.removeEventListener('mousedown', handleClick);
+  }, [dropdownOpen]);
+
+  const handleLogout = async () => {
+    await signOut();
+    navigate('/signup');
+  };
+
   return (
     <div className="min-h-screen bg-[#ECEFF2]">
       <Toaster
@@ -38,8 +64,28 @@ const DashboardLayout = ({ children }) => {
               <h1 className="text-[19px] font-bold text-black">MyBudgetBook</h1>
             </div>
             <div className="hidden md:flex items-center space-x-4">
-              <img src={Actions} alt="Notification"/>
-              <img src={Profile} alt="Profile" />
+              <img src={Actions} alt="Notification" />
+              <div className="relative" ref={profileRef}>
+                <img
+                  src={Profile}
+                  alt="Profile"
+                  className="cursor-pointer"
+                  onClick={() => setDropdownOpen((open) => !open)}
+                />
+                {dropdownOpen && (
+                  <div className="absolute right-0 mt-2 w-56 bg-white rounded-lg shadow-lg border border-gray-200 z-50 p-4 flex flex-col items-center">
+                    <div className="mb-2 text-gray-800 font-semibold text-sm truncate w-full text-center">
+                      {session?.user?.email || 'No user'}
+                    </div>
+                    <button
+                      onClick={handleLogout}
+                      className="w-full py-2 mt-2 rounded bg-red-500 text-white font-semibold hover:bg-red-600 transition"
+                    >
+                      Logout
+                    </button>
+                  </div>
+                )}
+              </div>
             </div>
           </div>
         </div>
