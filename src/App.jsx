@@ -13,7 +13,7 @@ import StatsSection from "./components/StatsSection";
 import ContactSection from "./components/ContactSection";
 import FooterSection from "./components/FooterSection";
 import Signin from "./components/Signin";
-import Signup from "./components/signup";
+import Signup from "./components/Signup";
 import { AuthProvider } from "./context/AuthContext";
 
 const AppContent = () => {
