@@ -1,45 +1,56 @@
 import { createContext, useContext, useState, useEffect } from "react"
-import { supabase } from "../superbaseClient"
 
 const AuthContext = createContext()
 
 export const AuthProvider = ({ children }) => {
-    const [session, setSession] = useState(undefined)
+    const [session, setSession] = useState(null)
 
+    // Mock authentication functions for demo
     const signUpNewUser = async (email, password) => {
-        const { data, error } = await supabase.auth.signUp({ email, password })
-        if (error) {
-            console.error(error)
+        // Simulate API delay
+        await new Promise(resolve => setTimeout(resolve, 1000))
+        
+        // Mock successful signup
+        const mockUser = {
+            id: 'demo-user-id',
+            email: email,
+            created_at: new Date().toISOString()
         }
-        return { data, error }
+        
+        setSession(mockUser)
+        return { data: { user: mockUser }, error: null }
     }
-    useEffect(() => {
-        supabase.auth.getSession().then(({ data: { session } }) => {
-            setSession(session)
-        })
-        supabase.auth.onAuthStateChange((event, session) => {
-            setSession(session)
-        })
-    }, [])
 
     const signInUser = async (email, password) => {
-        try {
-            const { data, error } = await supabase.auth.signInWithPassword({ email, password })
-            if (error) {
-                console.error(error)
+        // Simulate API delay
+        await new Promise(resolve => setTimeout(resolve, 1000))
+        
+        // Check for demo credentials
+        if (email === 'demo@mybudgetbook.com' && password === 'demo123') {
+            const mockUser = {
+                id: 'demo-user-id',
+                email: email,
+                created_at: new Date().toISOString()
             }
-            return { data, error }
-        } catch (error) {
-            console.error(error)
-            return { data: null, error }
+            
+            setSession(mockUser)
+            return { data: { user: mockUser }, error: null }
         }
+        
+        // For any other email/password, also allow (for demo purposes)
+        const mockUser = {
+            id: 'demo-user-id',
+            email: email,
+            created_at: new Date().toISOString()
+        }
+        
+        setSession(mockUser)
+        return { data: { user: mockUser }, error: null }
     }
 
     const signOut = () => {
-        const { error } = supabase.auth.signOut()
-        if (error) {
-            console.error(error)
-        }
+        setSession(null)
+        return { error: null }
     }
 
     return (

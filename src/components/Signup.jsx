@@ -15,6 +15,15 @@ const Signup = () => {
     e.preventDefault()
     setLoading(true)
     setError(null)
+    
+    // Email validation
+    const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/
+    if (!emailRegex.test(email)) {
+      setError('Please enter a valid email address.')
+      setLoading(false)
+      return
+    }
+    
     try {
       const result = await signUpNewUser(email, password)
       if (result && result.error) {
@@ -53,6 +62,34 @@ const Signup = () => {
           <h1 className="text-2xl font-bold text-gray-900 mb-1 drop-shadow">Sign up</h1>
           <p className="text-gray-200 text-base drop-shadow">Create your account</p>
         </div>
+    
+        <div className="w-full mb-6 p-4 rounded-xl bg-white/90 border border-gray-200 shadow-sm">
+          <div className="flex items-center gap-2 mb-3">
+            <div className="w-2 h-2 rounded-full bg-green-500"></div>
+            <p className="text-sm font-semibold text-gray-800">Demo Account</p>
+          </div>
+          <div className="space-y-2 mb-4">
+            <div className="flex items-center justify-between text-xs">
+              <span className="text-gray-600 font-medium">Email:</span>
+              <span className="text-gray-800 font-mono bg-gray-100 px-2 py-1 rounded">demo@mybudgetbook.com</span>
+            </div>
+            <div className="flex items-center justify-between text-xs">
+              <span className="text-gray-600 font-medium">Password:</span>
+              <span className="text-gray-800 font-mono bg-gray-100 px-2 py-1 rounded">demo123</span>
+            </div>
+          </div>
+          <button
+            type="button"
+            onClick={() => {
+              setEmail('demo@mybudgetbook.com')
+              setPassword('demo123')
+            }}
+            className="w-full py-2.5 px-4 bg-gray-800 text-white text-sm rounded-lg hover:bg-gray-900 transition-colors font-medium"
+          >
+            Use Demo Account
+          </button>
+        </div>
+
         <form onSubmit={handleSignup} className="flex flex-col gap-5 w-full mt-2">
           <input
             type="email"
